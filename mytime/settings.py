@@ -16,12 +16,13 @@ SECRET_KEY = 'django-insecure-aojc-#cjg_v(qao54i+yc)l^b%4($syzhws($9u^_4^io=_h38
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,6 +33,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,6 +76,7 @@ DATABASES = {
     }
 }
 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles", "static")
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
