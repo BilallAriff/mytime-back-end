@@ -77,6 +77,8 @@ DATABASES = {
 }
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles", "static")
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
